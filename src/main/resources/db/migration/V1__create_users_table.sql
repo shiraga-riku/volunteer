@@ -7,7 +7,6 @@ CREATE TABLE `users`
     `password`  varchar(255) NOT NULL DEFAULT 'aaa',
     `login_id`  varchar(255) NOT NULL,
     `role`      varchar(32)  NOT NULL,
-    `money`     int,
     PRIMARY KEY (`user_id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4

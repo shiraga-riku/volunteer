@@ -6,7 +6,7 @@
 	layout:decorate="~{layout/layout}">
 
 <head>
-<title>ユーザ登録</title>
+<title th:text="#{login}">ログイン</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
 						<div class="columns is-centered">
 							<div class="column is-5-tablet is-4-desktop is-3-widescreen">
 								<div class="field">
-									<label class="label">ログインID</label>
+									<label class="label" th:text="#{login_id}">ログインID</label>
 									<div class="control has-icons-left">
 										<input type="text" name="login_id" class="input" required /> <span
 											class="icon is-small is-left"> <i
@@ -30,7 +30,7 @@
 									</div>
 								</div>
 								<div class="field">
-									<label class="label">パスワード</label>
+									<label class="label" th:text="#{password}">パスワード</label>
 									<div class="control has-icons-left">
 										<input type="password" name="password" class="input" required />
 										<span class="icon is-small is-left"> <i
@@ -39,7 +39,7 @@
 									</div>
 								</div>
 								<div class="field">
-									<button class="button is-success">
+									<button class="button is-success" th:text="#{login}">
 										ログイン</button>
 								</div>
 							</div>

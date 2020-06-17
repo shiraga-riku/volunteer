@@ -38,8 +38,8 @@ public class SignUpController
         user.setName(userForm.getName());
         user.setEmail(userForm.getEmail());
         user.setRole("USER");
-        User createdUser = userService.create(user);
+        userService.create(user);
 
-        return "redirect:/login" + createdUser.getId();
+        return "redirect:/login";
     }
 }

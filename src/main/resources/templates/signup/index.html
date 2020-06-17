@@ -20,7 +20,7 @@
       <li th:each="error: ${#fields.detailedErrors()}" th:text="${error.message}">
     </ul>
 
-    <span th:text="#{loginId}">ログインID</span>:<input type="text" name="loginId"
+    <span th:text="#{login_id}">ログインID</span>:<input type="text" name="loginId"
                                                     th:value="*{loginId}"><br/>
     <span th:text="#{name}">名前</span>:<input type="text" name="name" th:value="*{name}"><br/>
     <span th:text="#{email}">メールアドレス</span>: <input type="text" name="email" th:value="*{email}">

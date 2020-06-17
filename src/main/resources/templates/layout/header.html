@@ -19,12 +19,13 @@
             th:if="${#authorization.expression('isAuthenticated()')}"
             th:action="@{/logout}"
             method="post">
-          <button type="submit">ログアウト</button>
+          <button type="submit" th:text="#{logout}">ログアウト</button>
         </form>
 
         <a
             th:unless="${#authorization.expression('isAuthenticated()')}"
-            th:href="@{/signup}">
+            th:href="@{/signup}"
+            th:text="#{user.create}">
           ユーザ登録
         </a>
 

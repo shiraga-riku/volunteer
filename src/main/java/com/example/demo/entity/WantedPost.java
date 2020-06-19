@@ -26,17 +26,6 @@ public class WantedPost {
 
 	@Column(name = "user_id")
 	private Integer user_id;
-	
-	@Column(name="name")
-	private String name;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public Integer getWanted_post_id() {
 		return wanted_post_id;

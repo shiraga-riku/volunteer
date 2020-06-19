@@ -6,11 +6,11 @@ import org.seasar.doma.Dao;
 import org.seasar.doma.Select;
 import org.seasar.doma.boot.ConfigAutowireable;
 
-import com.example.demo.entity.WantedPost;
+import com.example.demo.entity.PostUser;
 
 @ConfigAutowireable
 @Dao
 public interface WantedPostDao {
 	@Select
-	List<WantedPost> findAll();
+	List<PostUser> findAll();
 }

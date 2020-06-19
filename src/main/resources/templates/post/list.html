@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
+<head>
+<meta charset="UTF-8">
+<title th:text="#{post.list}">募集投稿一覧</title>
+
+<style>
+table {
+	border: 1px solid gray;
+}
+
+table th, table td {
+	border: 1px solid gray;
+}
+</style>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+		<h2 th:text="#{post.list}">募集投稿一覧</h2>
+		<div th:each="wantedPost : ${wantedPostList}"
+			th:object="${wantedPost}">
+			<span>_____________________________</span>
+			<table>
+				<thead>
+					<tr>
+						<th th:text="#{post_id}"></th>
+						<th th:text="#{title}">タイトル</th>
+						<th th:text="#{wanted_people}"></th>
+						<th th:text="#{name}"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td th:text="*{wanted_post_id}"></td>
+						<td th:text="*{title}"></td>
+						<td th:text="*{wanted_people}"></td>
+						<td th:text="*{name}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<h2 th:text="#{post}"></h2>
+			<p th:text="*{post}"></p>
+			<span>_____________________________</span>
+		</div>
+	</div>
+
+</body>
+</html>

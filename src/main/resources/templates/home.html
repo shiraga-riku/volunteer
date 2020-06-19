@@ -13,7 +13,6 @@
 		<h2>
 			あなたのログインIDは<span th:text="${name}"></span>です
 		</h2>
-		<a href="/menu">メニュー画面へ</a>
 		<div sec:authorize="hasAuthority('ADMIN')">
 			<a th:href="@{/admin/users/list}">ユーザ一覧</a>
 		</div>

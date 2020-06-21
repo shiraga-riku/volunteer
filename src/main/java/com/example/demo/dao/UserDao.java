@@ -19,6 +19,9 @@ public interface UserDao
 
     @Select
     List<User> findALl();
+    
+    @Select
+    User findUserId(String id);
 
     @Insert
     int insert(User user);

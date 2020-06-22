@@ -31,11 +31,11 @@ public class User
     @Column(name = "role")
     private String role;
 
-    public Integer getUser_id() {
+    public Integer getUserId() {
         return user_id;
     }
 
-    public void setUser_Id(Integer id) {
+    public void setUserId(Integer id) {
         this.user_id = id;
     }
 

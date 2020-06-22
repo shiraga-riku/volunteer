@@ -46,7 +46,7 @@ public class WantedPostController {
 			return "post/create.html";
 		}
 		WantedPost wantedPost = new WantedPost();
-		Integer userId = userService.findUserId(userDetails.getUsername()).getUser_id();
+		Integer userId = userService.findUserId(userDetails.getUsername()).getUserId();
 		wantedPost.setTitle(wantedPostForm.getTitle());
 		wantedPost.setPost(wantedPostForm.getPost());
 		wantedPost.setWanted_people(wantedPostForm.getWanted_people());

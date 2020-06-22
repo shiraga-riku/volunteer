@@ -15,6 +15,9 @@ import com.example.demo.entity.WantedPost;
 public interface WantedPostDao {
 	@Select
 	List<PostUser> findAll();
+	
+	@Select
+	PostUser findBy(Integer id);
 
 	@Insert
 	int insert(WantedPost wantedPost);

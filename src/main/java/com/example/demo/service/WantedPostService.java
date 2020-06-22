@@ -18,6 +18,10 @@ public class WantedPostService {
 	public List<PostUser> findAll() {
 		return this.wantedPostDao.findAll();
 	}
+	
+	public PostUser findBy(Integer id) {
+		return this.wantedPostDao.findBy(id);
+	}
 
 	@Transactional
 	public WantedPost create(WantedPost wantedPost) {

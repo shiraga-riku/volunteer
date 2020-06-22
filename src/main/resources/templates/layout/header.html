@@ -10,7 +10,7 @@
       <header>
         <span
             th:if="${#authorization.expression('isAuthenticated()')}"
-            th:text="|${#authentication.principal.username}さん|"
+            th:text="|loginId<${#authentication.principal.username}>|"
             >
 
         </span>

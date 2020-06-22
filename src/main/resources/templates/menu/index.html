@@ -10,8 +10,11 @@
 </head>
 <body>
 	<div layout:fragment="content">
+		<div th:object="${user}">
+			<P th:text="*{name}+'さん'"></P>
+		</div>
 		<ul>
-			<li><a th:href="@{/}" th:text="#{volunteer_post}">ボランティア募集投稿</a></li>
+			<li><a th:href="@{/post/create}" th:text="#{volunteer_post}">ボランティア募集投稿</a></li>
 			<li><a th:href="@{/post/list}" th:text="#{post.list}">ボランティア募集一覧</a></li>
 		</ul>
 	</div>

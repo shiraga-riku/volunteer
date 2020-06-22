@@ -25,6 +25,10 @@ public class UserService {
 	public List<User> findAll() {
 		return this.userDao.findALl();
 	}
+	
+	public User findUserId(String id) {
+		return userDao.findUserId(id);
+	}
 
 	@Transactional
 	public User create(User user) {

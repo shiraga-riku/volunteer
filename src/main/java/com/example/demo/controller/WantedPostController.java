@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -56,10 +57,14 @@ public class WantedPostController {
 		return "redirect:/post/list";
 	}
 	
-	@GetMapping("{id}")
-	public String show(Model model,@PathVariable Integer id) {
-		PostUser postUser = postService.findBy(id);
-		model.addAttribute("wantedPost", postUser);
-		return "post/show.html";
+	@GetMapping({"","{id}"})
+	public String show(Model model,@PathVariable(name = "id", required = false) Optional<Integer> id) {
+		if(id.isPresent()) {
+			Integer iD = id.get();
+			PostUser postUser = postService.findBy(iD);
+			model.addAttribute("wantedPost", postUser);
+			return "post/show.html";
+		}
+		return "post/list.html";
 	}
 }

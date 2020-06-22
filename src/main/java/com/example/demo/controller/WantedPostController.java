@@ -62,9 +62,12 @@ public class WantedPostController {
 		if(id.isPresent()) {
 			Integer iD = id.get();
 			PostUser postUser = postService.findBy(iD);
+			if(postUser==null) {
+				return "redirect:/post/list";
+			}
 			model.addAttribute("wantedPost", postUser);
 			return "post/show.html";
 		}
-		return "post/list.html";
+		return "redirect:/post/list";
 	}
 }

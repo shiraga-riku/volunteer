@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -14,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.entity.PostUser;
 import com.example.demo.entity.WantedPost;
@@ -43,7 +44,8 @@ public class WantedPostController {
 	}
 
 	@PostMapping("/create")
-	public String create(@AuthenticationPrincipal UserDetails userDetails, @Validated WantedPostForm wantedPostForm, BindingResult bindingResult, Model model) {
+	public String create(@AuthenticationPrincipal UserDetails userDetails, @Validated WantedPostForm wantedPostForm,
+			BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors()) {
 			return "post/create.html";
 		}
@@ -56,18 +58,33 @@ public class WantedPostController {
 		postService.create(wantedPost);
 		return "redirect:/post/list";
 	}
-	
-	@GetMapping({"","{id}"})
-	public String show(Model model,@PathVariable(name = "id", required = false) Optional<Integer> id) {
-		if(id.isPresent()) {
-			Integer iD = id.get();
-			PostUser postUser = postService.findBy(iD);
-			if(postUser==null) {
-				return "redirect:/post/list";
-			}
-			model.addAttribute("wantedPost", postUser);
-			return "post/show.html";
+
+	@GetMapping("{id}")
+	public String show(Model model, @PathVariable Integer id, @AuthenticationPrincipal UserDetails userDetails) {
+
+		PostUser postUser = postService.findBy(id);
+		if (postUser == null) {
+			return "redirect:/post/list";
 		}
-		return "redirect:/post/list";
+		Integer userId = userService.findUserId(userDetails.getUsername()).getUserId();
+		model.addAttribute("wantedPost", postUser);
+		model.addAttribute("subscription", postService.findSubscription(userId, id));
+		return "post/show.html";
+
 	}
+
+	@PostMapping("/subscription")
+	@ResponseBody
+	public void subscription(@RequestParam Integer wanted_post_id, @AuthenticationPrincipal UserDetails userDetails) {
+		Integer userId = userService.findUserId(userDetails.getUsername()).getUserId();
+		postService.subscription(userId, wanted_post_id, true);
+	}
+
+	@PostMapping("/unSubscription")
+	@ResponseBody
+	public void unSubscription(@RequestParam Integer wanted_post_id, @AuthenticationPrincipal UserDetails userDetails) {
+		Integer userId = userService.findUserId(userDetails.getUsername()).getUserId();
+		postService.subscription(userId, wanted_post_id, false);
+	}
+
 }

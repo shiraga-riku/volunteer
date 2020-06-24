@@ -44,6 +44,48 @@ table th, table td {
 			</table>
 			<h2 th:text="#{post}"></h2>
 			<p th:text="*{post}"></p>
+
+			<div>
+				<button 
+					th:style="'display:' + (${subscription} ? 'none' : '')"
+					th:onclick="|subscript(this, '*{wanted_post_id}',true)|"
+					th:text="#{subscript}">応募する</button>
+				<button 
+					th:style="'display:' + (${subscription} ? '' : 'none')"
+					th:onclick="|subscript(this, '*{wanted_post_id}',false)|"
+					th:text="#{subscripted}">応募済み</button>
+			</div>
+
+			<script type="text/javascript">
+
+    function subscript(element, wanted_post_id,doSubscript) {
+
+      const token = document.querySelector("meta[name='_csrf']").attributes['content'].value;
+      const header = document.querySelector(
+          "meta[name='_csrf_header']").attributes['content'].value;
+
+      let url =  doSubscript ? "/post/subscription" : "/post/unSubscription";
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          "Content-Type": 'application/x-www-form-urlencoded',
+          [header]: token
+        },
+        body: 'wanted_post_id=' + wanted_post_id
+      }).then(
+    		  response => {
+    	            if (doSubscript) {
+    	            	element.style.display = 'none';
+    	                element.nextElementSibling.style.display = '';
+    	            } else {
+    	            	element.style.display = 'none';
+    	            	element.previousElementSibling.style.display = '';
+    	            }
+    	          }
+      );
+    }
+
+  </script>
 			<span>_____________________________</span>
 		</div>
 	</div>

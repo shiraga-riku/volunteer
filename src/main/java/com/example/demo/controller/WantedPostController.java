@@ -61,7 +61,7 @@ public class WantedPostController {
 	}
 
 	@GetMapping({ "", "{id}" })
-	public String show(Model model, @PathVariable(name = "id", required = false) Optional<Integer> id,
+	public String show(Model model, @PathVariable Optional<Integer> id,
 			@AuthenticationPrincipal UserDetails userDetails) {
 		if (id.isPresent()) {
 			Integer iD = id.get();
@@ -72,7 +72,6 @@ public class WantedPostController {
 			Integer userId = userService.findUserId(userDetails.getUsername()).getUserId();
 			model.addAttribute("wantedPost", postUser);
 			model.addAttribute("subscription", postService.findSubscription(userId, iD));
-//			model.addAttribute("subscriptionForm",new SubscriptionForm());
 			return "post/show.html";
 		}
 		return "redirect:/post/list";

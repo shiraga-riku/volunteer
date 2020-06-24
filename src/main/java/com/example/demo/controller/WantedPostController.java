@@ -79,20 +79,18 @@ public class WantedPostController {
 
 	@PostMapping("/subscription")
 	@ResponseBody
-	public Boolean subscription(@RequestParam Integer wanted_post_id,
+	public void subscription(@RequestParam Integer wanted_post_id,
 			@AuthenticationPrincipal UserDetails userDetails) {
 		Integer userId = userService.findUserId(userDetails.getUsername()).getUserId();
 		postService.subscription(userId, wanted_post_id, true);
-		return true;
 	}
 
 	@PostMapping("/unSubscription")
 	@ResponseBody
-	public Boolean unSubscription(@RequestParam Integer wanted_post_id,
+	public void unSubscription(@RequestParam Integer wanted_post_id,
 			@AuthenticationPrincipal UserDetails userDetails) {
 		Integer userId = userService.findUserId(userDetails.getUsername()).getUserId();
 		postService.subscription(userId, wanted_post_id, false);
-		return true;
 	}
 
 }

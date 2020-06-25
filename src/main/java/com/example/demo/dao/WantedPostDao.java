@@ -24,6 +24,13 @@ public interface WantedPostDao {
 	@Select
 	Subscription findSubscription(Integer userId, Integer wantedPostId);
 	
+	/**
+	 * ビュー(/post/list.html)で投稿のタイトルと募集人数を検索
+	 * @param title　投稿タイトル
+	 * @param wantedPeople　募集人数
+	 * その検索に引っかかるものを返している
+	 * @return
+	 */
 	@Select
 	List<PostUser> search(String title,Integer wantedPeople);
 

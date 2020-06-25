@@ -28,6 +28,10 @@ public class WantedPostService {
 		return this.wantedPostDao.findSubscription(userId, wantedPostId);
 	}
 
+	public List<PostUser> search(String title,Integer wantedPeople) {
+		return this.wantedPostDao.search(title,wantedPeople);
+	}
+
 	@Transactional
 	public WantedPost create(WantedPost wantedPost) {
 		wantedPostDao.insert(wantedPost);

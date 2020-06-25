@@ -23,6 +23,9 @@ public interface WantedPostDao {
 
 	@Select
 	Subscription findSubscription(Integer userId, Integer wantedPostId);
+	
+	@Select
+	List<PostUser> search(String title,Integer wantedPeople);
 
 	@Insert
 	int insert(WantedPost wantedPost);

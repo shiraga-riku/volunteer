@@ -22,6 +22,39 @@ table th, table td {
 
 	<div layout:fragment="content">
 		<h2 th:text="#{post.list}">募集投稿一覧</h2>
+		<form action="/post/search" method="get">
+			<input type="search" name="search" placeholder="募集投稿タイトル"><br/>
+			<input type="search" name="wantedPeople" placeholder="募集人数">
+			<button type="submit">検索</button>
+		</form>
+		<div th:each="postSearch : ${postSearch}"
+			th:object="${postSearch}">
+			<span>_____________________________</span>
+			<table>
+				<thead>
+					<tr>
+						<th th:text="#{post_id}">投稿ID</th>
+						<th th:text="#{title}">タイトル</th>
+						<th th:text="#{wanted_people}">募集人数</th>
+						<th th:text="#{name}">名前</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td th:text="*{wanted_post_id}"></td>
+						<td th:text="*{title}"></td>
+						<td th:text="*{wanted_people}"></td>
+						<td th:text="*{name}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<h2 th:text="#{post}"></h2>
+			<p th:text="*{post}"></p>
+			<div>
+				<a th:href="@{/post/{id}(id=*{wanted_post_id})}" th:text="#{showview}">詳細画面へ</a>
+			</div>
+			<span>_____________________________</span>
+		</div>
 		<div th:each="wantedPost : ${wantedPostList}"
 			th:object="${wantedPost}">
 			<span>_____________________________</span>

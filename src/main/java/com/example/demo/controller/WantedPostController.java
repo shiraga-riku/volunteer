@@ -90,7 +90,6 @@ public class WantedPostController {
 	@GetMapping("/search")
 	public String search(@RequestParam(name = "search", required = false) String title,@RequestParam(name = "wantedPeople", required = false) Integer wantedPeople, Model model) {
 		List<PostUser> postUser = postService.search(title,wantedPeople);
-//		List<Subscription> sub=postService.
 		model.addAttribute("postSearch", postUser);
 		return "post/list.html";
 	}

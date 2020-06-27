@@ -6,9 +6,9 @@ from wanted_posts P
 where
 /*%if title != null*/
 	title
-    Like /* "%" + title "%" + */'a'
+    Like /* @infix(title) */'a'
 /*%end*/
 /*%if wantedPeople != null*/
 	AND
-    /*wantedPeople*/10 < wanted_people
+    /*wantedPeople*/10 <= wanted_people
 /*%end*/

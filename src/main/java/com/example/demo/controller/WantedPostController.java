@@ -86,5 +86,12 @@ public class WantedPostController {
 		Integer userId = userService.findUserId(userDetails.getUsername()).getUserId();
 		postService.subscription(userId, wanted_post_id, false);
 	}
+	
+	@GetMapping("/search")
+	public String search(@RequestParam(name = "search", required = false) String title,@RequestParam(name = "wantedPeople", required = false) Integer wantedPeople, Model model) {
+		List<PostUser> postUser = postService.search(title,wantedPeople);
+		model.addAttribute("postSearch", postUser);
+		return "post/list.html";
+	}
 
 }

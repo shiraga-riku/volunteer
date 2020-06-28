@@ -1,36 +1,29 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-  <body>
-    <header
-        id="global-header"
-        layout:fragment="header">
-      <header>
-        <span
-            th:if="${#authorization.expression('isAuthenticated()')}"
-            th:text="|loginId<${#authentication.principal.username}>|"
-            >
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<header id="global-header" layout:fragment="header">
+		<div class="headercontent">
+			<span th:if="${#authorization.expression('isAuthenticated()')}"
+				th:text="|loginId<${#authentication.principal.username}>|">
 
-        </span>
+			</span>
 
-        <form
-            th:if="${#authorization.expression('isAuthenticated()')}"
-            th:action="@{/logout}"
-            method="post">
-          <button type="submit" th:text="#{logout}">ログアウト</button>
-          <a th:href="@{/menu}" th:text="#{menu}">メニュー画面へ</a>
-        </form>
+			<form th:if="${#authorization.expression('isAuthenticated()')}"
+				th:action="@{/logout}" method="post">
+				<button type="submit" th:text="#{logout}">ログアウト</button>
+				<a th:href="@{/menu}" th:text="#{menu}" class="button">メニュー画面へ</a>
+			</form>
 
-        <a
-            th:unless="${#authorization.expression('isAuthenticated()')}"
-            th:href="@{/signup}"
-            th:text="#{user.create}">
-          ユーザ登録
-        </a>
+			<a th:unless="${#authorization.expression('isAuthenticated()')}"
+				th:href="@{/signup}" th:text="#{user.create}"> ユーザ登録 </a>
 
-      </header>
-    </header>
-  </body>
+		</div>
+	</header>
+</body>
 </html>

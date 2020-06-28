@@ -1,37 +1,40 @@
 <!DOCTYPE html>
-<html lang="ja"
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout}">
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layout}">
 <head>
-  <meta charset="UTF-8">
-  <title th:text="#{user.create}">ユーザ登録</title>
+<meta charset="UTF-8">
+<title th:text="#{user.create}">ユーザ登録</title>
 </head>
 
 <body>
 
-<div layout:fragment="content">
-  <h2 th:text="#{user.create}">ユーザ登録</h2>
+	<div layout:fragment="content">
+		<h2 th:text="#{user.create}">ユーザ登録</h2>
 
-  <form th:action="@{/signup}" method="post" th:object="${userForm}">
+		<form th:action="@{/signup}" method="post" th:object="${userForm}"
+			style="padding: 50px; margin: 2em 0; font-weight: bold; color: #6091d3; background: #FFF; border: solid 3px #6091d3; border-radius: 10px;">
 
-    <ul>
-      <li th:each="error: ${#fields.detailedErrors()}" th:text="${error.message}">
-    </ul>
+			<ul>
+				<li th:each="error: ${#fields.detailedErrors()}"
+					th:text="${error.message}">
+			</ul>
 
-    <span th:text="#{login_id}">ログインID</span>:<input type="text" name="loginId"
-                                                    th:value="*{loginId}"><br/>
-    <span th:text="#{name}">名前</span>:<input type="text" name="name" th:value="*{name}"><br/>
-    <span th:text="#{email}">メールアドレス</span>: <input type="text" name="email" th:value="*{email}">
-    <span th:text="#{password}">パスワード</span>: <input type="password" name="password"
-                                                     th:value="*{password}">
+			<span th:text="#{login_id}">ログインID</span>:<input type="text"
+				name="loginId" th:value="*{loginId}"><br /> <span
+				th:text="#{name}">名前</span>:<input type="text" name="name"
+				th:value="*{name}"><br /> <span th:text="#{email}">メールアドレス</span>:
+			<input type="text" name="email" th:value="*{email}"> <span
+				th:text="#{password}">パスワード</span>: <input type="password"
+				name="password" th:value="*{password}">
 
 
 
-    <button type="submit" th:text="#{register}">登録</button>
-  </form>
-</div>
+			<button type="submit" th:text="#{register}"
+				style="position: relative; display: inline-block; padding: 0.25em 0.5em; text-decoration: none; color: #FFF; background: #fd9535; border-bottom: solid 2px #d27d00; border-radius: 4px; box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2), 0 2px 2px rgba(0, 0, 0, 0.19); font-weight: bold; margin-top: 10px;">登録</button>
+		</form>
+	</div>
 
 </body>
 </html>

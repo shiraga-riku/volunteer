@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title th:text="#{post_show}">募集投稿詳細</title>
-
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
 <style>
 table {
 	border: 1px solid gray;
@@ -21,9 +21,9 @@ table th, table td {
 <body>
 
 	<div layout:fragment="content">
-		<h2 th:text="#{post_show}">募集投稿詳細</h2>
-		<div th:object="${wantedPost}">
-			<span>_____________________________</span>
+	<div class="listcontent">
+		<h2 th:text="#{post_show}" class="showtitle">募集投稿詳細</h2>
+		<div th:object="${wantedPost}" class="showcontent">
 			<table>
 				<thead>
 					<tr>
@@ -42,18 +42,17 @@ table th, table td {
 					</tr>
 				</tbody>
 			</table>
-			<h2 th:text="#{post}"></h2>
-			<p th:text="*{post}"></p>
-
+			<h2 th:text="#{post}" class="post"></h2>
+			<div class="postborder">
+				<p th:text="*{post}"></p>
+			</div>
 			<div>
-				<button 
-					th:style="'display:' + (${subscription} ? 'none' : '')"
+				<button th:style="'display:' + (${subscription} ? 'none' : '')"
 					th:onclick="|subscript(this, '*{wanted_post_id}',true)|"
-					th:text="#{subscript}">応募する</button>
-				<button 
-					th:style="'display:' + (${subscription} ? '' : 'none')"
+					th:text="#{subscript}" class="subscript">応募する</button>
+				<button th:style="'display:' + (${subscription} ? '' : 'none')"
 					th:onclick="|subscript(this, '*{wanted_post_id}',false)|"
-					th:text="#{subscripted}">応募済み</button>
+					th:text="#{subscripted}" class="subscripted">応募済み</button>
 			</div>
 
 			<script type="text/javascript">
@@ -86,7 +85,7 @@ table th, table td {
     }
 
   </script>
-			<span>_____________________________</span>
+  </div>
 		</div>
 	</div>
 

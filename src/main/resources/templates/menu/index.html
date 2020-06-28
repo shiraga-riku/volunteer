@@ -7,16 +7,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Spring Boot Sample</title>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+
 </head>
 <body>
 	<div layout:fragment="content">
-		<div th:object="${user}">
-			<P th:text="*{name}+'さん'"></P>
-		</div>
+		<div th:object="${user}" class="menucontent">
+			<P th:text="'名前：'+*{name}+'さん'" class="username"></P>
+		
 		<ul>
-			<li><a th:href="@{/post/create}" th:text="#{volunteer_post}">ボランティア募集投稿</a></li>
-			<li><a th:href="@{/post/list}" th:text="#{post.list}">ボランティア募集一覧</a></li>
+			<li><a th:href="@{/post/create}" th:text="#{volunteer_post}" class="button">ボランティア募集投稿</a></li>
+			<li><a th:href="@{/post/list}" th:text="#{post.list}" class="button">ボランティア募集一覧</a></li>
 		</ul>
+		</div>
 	</div>
 </body>
 </html>

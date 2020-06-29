@@ -127,7 +127,6 @@ input, select {
 
 /* menu/index.html */
 .menucontent {
-	background-color: #ff9;
 	height: 100px;
 	padding: 50px;
 	position: relative;
@@ -141,7 +140,6 @@ input, select {
 /* post/create.html */
 .createcontent {
 	height: 100vh;
-	background-color: #ff9;
 	position: relative;
 }
 
@@ -166,7 +164,6 @@ input, select {
 .listcontent {
 	height: 100vh;
 	overflow: scroll;
-	background-color: #ff9;
   position: relative;
 }
 

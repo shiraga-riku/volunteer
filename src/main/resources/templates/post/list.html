@@ -25,8 +25,8 @@ table th, table td {
 		<div class="listcontent">
 			<h2 th:text="#{post.list}" class="listtitle">募集投稿一覧</h2>
 			<form th:action="@{/post/search}" method="get" class="searchform">
-				<input type="search" name="search" placeholder="募集投稿タイトル"><br />
-				<input type="search" name="wantedPeople" placeholder="募集人数">
+				<input type="search" name="search" placeholder="募集投稿タイトル" class="search"><br />
+				<input type="search" name="wantedPeople" placeholder="募集人数" class="search">
 				<button type="submit" class="button">検索</button>
 			</form>
 			<div th:each="postSearch : ${postSearch}" th:object="${postSearch}"

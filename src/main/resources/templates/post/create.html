@@ -21,9 +21,9 @@
 						th:text="${error.message}">
 				</ul>
 				<span th:text="#{title}">タイトル</span>:<input type="text" name="title"
-					th:value="*{title}"><br /> <span
+					th:value="*{title}" class="create"><br /> <span
 					th:text="#{wanted_people}">募集人数</span>:<input type="text"
-					name="wanted_people" th:value="*{wanted_people}"><br /> <span
+					name="wanted_people" th:value="*{wanted_people}" class="create"><br /> <span
 					th:text="#{wantedpost}">募集投稿</span>:
 				<textarea name="post" th:value="*{post}" class="cratepost"></textarea>
 				<button type="submit" th:text="#{register}" class="button">登録</button>
